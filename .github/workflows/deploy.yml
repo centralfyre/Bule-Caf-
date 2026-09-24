@@ -38,6 +38,8 @@ jobs:
           test -f out/index.html
           sudo apt-get update -qq
           sudo apt-get install -y -qq lftp
+          # Testa login sem depender da interpretação de vírgulas pelo lftp.
+          curl --silent --show-error --fail --insecure --ssl-reqd --connect-timeout 15 --max-time 30 --user "$FTP_USER:$FTP_PASSWORD" "ftp://89.117.7.121/" --output /dev/null
           timeout 120 lftp -u "$FTP_USER","$FTP_PASSWORD" "ftp://89.117.7.121" -e '
             set cmd:fail-exit yes
             set ftp:ssl-force yes
