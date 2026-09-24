@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 330">
+  <defs><linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ffdba6"/><stop offset=".58" stop-color="#ffc18b"/><stop offset="1" stop-color="#ffaf72"/></linearGradient></defs>
+  <path fill="url(#warm)" d="M210 25C245 28 264 2 296 14C330 26 321 54 350 71C377 88 406 84 413 116C422 151 388 163 396 195C405 229 380 250 348 254C314 258 321 292 285 307C251 322 234 294 205 303C174 313 151 335 123 318C96 301 106 275 77 264C46 252 17 255 10 222C3 191 28 172 20 146C10 117 1 91 27 72C51 54 76 70 98 53C122 35 114 13 148 9C179 5 182 23 210 25Z"/>
+</svg>
