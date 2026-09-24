@@ -39,4 +39,15 @@ jobs:
           test -f out/index.html
           sudo apt-get update -qq
           sudo apt-get install -y -qq lftp
-          timeout 20 openssl s_client -connect 89.117.7.121:21 -starttls ftp -showcerts </dev/null 2>/dev/null | openssl x509 -noout -subject -ext subjectAltName
+          timeout 120 lftp -u "$FTP_USER","$FTP_PASSWORD" "ftp://89.117.7.121" -e '
+            set cmd:fail-exit yes
+            set ftp:ssl-force yes
+            set ftp:ssl-protect-data yes
+            set ssl:verify-certificate yes
+            set ssl:check-hostname no
+            set net:timeout 15
+            set net:max-retries 1
+            cd public_html
+            mirror --reverse --parallel=4 out/ .
+            bye
+          '
