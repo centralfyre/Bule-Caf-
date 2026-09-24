@@ -39,13 +39,13 @@ jobs:
           test -f out/index.html
           sudo apt-get update -qq
           sudo apt-get install -y -qq lftp
-          lftp -c '
+          lftp -u "$FTP_USER","$FTP_PASSWORD" "ftp://$FTP_HOST" -e '
             set cmd:fail-exit yes
             set ftp:ssl-force yes
             set ftp:ssl-protect-data yes
             set ssl:verify-certificate yes
             set net:max-retries 2
-            open --user "$FTP_USER","$FTP_PASSWORD" "ftp://$FTP_HOST"
             cd public_html
-            mirror --reverse --verbose --parallel=4 out/ .
+            mirror --reverse --parallel=4 out/ .
+            bye
           '
